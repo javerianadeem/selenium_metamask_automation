@@ -1,0 +1,7 @@
+setup.py
+selenium_metamask_automation/__init__.py
+selenium_metamask_automation.egg-info/PKG-INFO
+selenium_metamask_automation.egg-info/SOURCES.txt
+selenium_metamask_automation.egg-info/dependency_links.txt
+selenium_metamask_automation.egg-info/requires.txt
+selenium_metamask_automation.egg-info/top_level.txt
