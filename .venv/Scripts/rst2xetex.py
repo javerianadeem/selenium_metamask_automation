@@ -1,4 +1,4 @@
-#!f:\new python packag\selenium_metamask_automation\.venv\scripts\python.exe
+#!f:\newpythonpackag\selenium_metamask_automation\.venv\scripts\python.exe
 
 # $Id: rst2xetex.py 7847 2015-03-17 17:30:47Z milde $
 # Author: Guenter Milde

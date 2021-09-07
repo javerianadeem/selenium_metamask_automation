@@ -1,4 +1,4 @@
-#!f:\new python packag\selenium_metamask_automation\.venv\scripts\python.exe
+#!f:\newpythonpackag\selenium_metamask_automation\.venv\scripts\python.exe
 # -*- coding: utf8 -*-
 # :Copyright: © 2015 Günter Milde.
 # :License: Released under the terms of the `2-Clause BSD license`_, in short:

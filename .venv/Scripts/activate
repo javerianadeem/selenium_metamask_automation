@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="F:\New python packag\selenium_metamask_automation\.venv"
+VIRTUAL_ENV="F:\Newpythonpackag\selenium_metamask_automation\.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -1,4 +1,4 @@
-#!f:\new python packag\selenium_metamask_automation\.venv\scripts\python.exe
+#!f:\newpythonpackag\selenium_metamask_automation\.venv\scripts\python.exe
 
 # $Id: rst2latex.py 5905 2009-04-16 12:04:49Z milde $
 # Author: David Goodger <goodger@python.org>

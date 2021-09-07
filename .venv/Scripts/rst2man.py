@@ -1,4 +1,4 @@
-#!f:\new python packag\selenium_metamask_automation\.venv\scripts\python.exe
+#!f:\newpythonpackag\selenium_metamask_automation\.venv\scripts\python.exe
 
 # Author:
 # Contact: grubert@users.sf.net
