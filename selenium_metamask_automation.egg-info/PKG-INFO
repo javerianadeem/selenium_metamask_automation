@@ -2,7 +2,7 @@ Metadata-Version: 1.2
 Name: selenium-metamask-automation
 Version: 0.1
 Summary: Python package, for automating metamask transaction on testnet
-Home-page: https://github.com/javerianadeem/selenium-metamask-automation
+Home-page: git@github.com:javerianadeem/selenium_metamask_automation
 Author: Javeria Nadeem
 Author-email: javerianadeem03@gmail.com
 License: UNKNOWN
