@@ -5,7 +5,9 @@ import os
 
 
 
-EXTENSION_PATH = os.getcwd() + r'\10.0.2_0.crx'
+EXTENSION_PATH = os.getcwd() + r"\10.0.2_0.crx"
+# EXTENSION_PATH = r'F:\Newpythonpackag\selenium_metamask_automation\selenium_metamask_automation\10.0.2_0.crx'
+print(EXTENSION_PATH)
 
 EXTENSION_ID = 'nkbihfbeogaeaoehlefnkodbefgpgknn'
 
