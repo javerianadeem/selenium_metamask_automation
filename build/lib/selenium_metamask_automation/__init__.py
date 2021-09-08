@@ -1,8 +1,11 @@
 from selenium import webdriver
 import time
 from selenium.webdriver.chrome.options import Options
+import os
 
-EXTENSION_PATH = r'./10.0.2_0.crx'
+
+
+EXTENSION_PATH = os.getcwd() + r'\10.0.2_0.crx'
 
 EXTENSION_ID = 'nkbihfbeogaeaoehlefnkodbefgpgknn'
 
