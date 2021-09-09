@@ -6,13 +6,13 @@ import os
 
 
 EXTENSION_PATH = os.getcwd() + r"\10.0.2_0.crx"
-# EXTENSION_PATH = r'F:\Newpythonpackag\selenium_metamask_automation\selenium_metamask_automation\10.0.2_0.crx'
-print('pathhhhhh',EXTENSION_PATH)
 
 
 EXTENSION_ID = 'nkbihfbeogaeaoehlefnkodbefgpgknn'
 
-# EXTENSION_PATH = r'10.0.2_0.crx'
+
+
+
 def launchSeleniumWebdriver(driverPath):
     return EXTENSION_PATH
     print('path' ,EXTENSION_PATH)
@@ -177,3 +177,4 @@ def rejectTransactionFromMetamask():
     # switch to dafi
     driver.switch_to.window(driver.window_handles[0])
     time.sleep(3)
+
