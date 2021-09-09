@@ -5,16 +5,18 @@ import os
 
 
 
-EXTENSION_PATH = os.getcwd() + r"\selenium_metamask_automation\10.0.2_0.crx"
+EXTENSION_PATH = r"\selenium_metamask_automation\10.0.2_0.crx"
 
 
 EXTENSION_ID = 'nkbihfbeogaeaoehlefnkodbefgpgknn'
 
 
-
+def hello(driverPath):
+    return EXTENSION_PATH
 
 def launchSeleniumWebdriver(driverPath):
     print('path' ,EXTENSION_PATH)
+
     chrome_options = Options()
     chrome_options.add_extension(EXTENSION_PATH)
     global driver
