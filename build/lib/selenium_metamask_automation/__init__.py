@@ -4,13 +4,14 @@ from selenium.webdriver.chrome.options import Options
 import os
 import urllib.request
 
-print('Beginning file download with')
 
-url = 'https://events-dapp-modules.s3.amazonaws.com/selenium/10.0.2_0.crx'
+print('Setting up metamask extension please wait...')
+
+url = 'https://xord-testing.s3.amazonaws.com/selenium/10.0.2_0.crx'
 urllib.request.urlretrieve(url, os.getcwd() + '/metamaskExtension.crx')
 
 
-EXTENSION_PATH = os.getcwd() + '/metamaskExtension.crx'
+EXTENSION_PATH = os.getcwd() + '\metamaskExtension.crx'
 
 
 EXTENSION_ID = 'nkbihfbeogaeaoehlefnkodbefgpgknn'
