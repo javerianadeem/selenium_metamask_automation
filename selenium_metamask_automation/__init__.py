@@ -5,12 +5,12 @@ import os
 import sys
 
 
-EXTENSION_PATH = os.path.join(sys.path[0], "10.0.2_0.crx")
+EXTENSION_PATH = os.getcwd() + r"\selenium_metamask_automation\10.0.2_0.crx"
 
 
 EXTENSION_ID = 'nkbihfbeogaeaoehlefnkodbefgpgknn'
 
-# print(os.path.join(sys.path[0], "10.0.2_0.crx"))
+print(os.path.join(sys.path[0], "10.0.2_0.crx"))
 
 
 def launchSeleniumWebdriver(driverPath):
