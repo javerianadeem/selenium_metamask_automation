@@ -58,8 +58,6 @@ def metamaskSetup(recoveryPhrase, password):
 
 
 def changeMetamaskNetwork(networkName):
-    launchSeleniumWebdriver('C:\Drivers\chromedriver_win32\chromedriver.exe')
-    metamaskSetup('vast subject prize relax valid section shell jealous fun army pear boring', 'metamask123')
     # opening network
     print("Changing network")
     driver.switch_to.window(driver.window_handles[1])
