@@ -4,20 +4,20 @@ from selenium.webdriver.chrome.options import Options
 import os
 import urllib.request
 
+EXTENSION_PATH = os.getcwd() + '\metamaskExtension.crx'
+
+EXTENSION_ID = 'nkbihfbeogaeaoehlefnkodbefgpgknn'
+
+
 def downloadMetamaskExtension():
     print('Setting up metamask extension please wait...')
 
     url = 'https://xord-testing.s3.amazonaws.com/selenium/10.0.2_0.crx'
     urllib.request.urlretrieve(url, os.getcwd() + '/metamaskExtension.crx')
 
-    global EXTENSION_PATH
-    EXTENSION_PATH = os.getcwd() + '\metamaskExtension.crx'
-
-    global EXTENSION_ID
-    EXTENSION_ID = 'nkbihfbeogaeaoehlefnkodbefgpgknn'
 
 def launchSeleniumWebdriver(driverPath):
-    print('path' ,EXTENSION_PATH)
+    print('path', EXTENSION_PATH)
     chrome_options = Options()
     chrome_options.add_extension(EXTENSION_PATH)
     global driver
@@ -26,8 +26,8 @@ def launchSeleniumWebdriver(driverPath):
     print("Extension has been loaded")
     return driver
 
-def metamaskSetup(recoveryPhrase, password):
 
+def metamaskSetup(recoveryPhrase, password):
     driver.switch_to.window(driver.window_handles[0])
 
     driver.find_element_by_xpath('//button[text()="Get Started"]').click()
@@ -73,7 +73,7 @@ def changeMetamaskNetwork(networkName):
     time.sleep(2)
     for li in all_li:
         text = li.text
-        if(text == networkName):
+        if (text == networkName):
             li.click()
             print(text, "is selected")
             time.sleep(2)
@@ -84,8 +84,8 @@ def changeMetamaskNetwork(networkName):
     driver.switch_to.window(driver.window_handles[0])
     time.sleep(3)
 
-def connectToWebsite():
 
+def connectToWebsite():
     time.sleep(3)
 
     driver.execute_script("window.open('');")
@@ -103,6 +103,7 @@ def connectToWebsite():
     print(driver.window_handles)
     driver.switch_to.window(driver.window_handles[0])
     time.sleep(3)
+
 
 def confirmApprovalFromMetamask():
     driver.execute_script("window.open('');")
@@ -174,7 +175,7 @@ def rejectTransactionFromMetamask():
     time.sleep(2)
     print("Transaction rejected")
 
-    # switch to dafi
+    # switch to web window
     driver.switch_to.window(driver.window_handles[0])
     time.sleep(3)
 
