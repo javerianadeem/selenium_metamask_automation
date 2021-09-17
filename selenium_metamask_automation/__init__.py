@@ -4,19 +4,17 @@ from selenium.webdriver.chrome.options import Options
 import os
 import urllib.request
 
+def downloadMetamaskExtension():
+    print('Setting up metamask extension please wait...')
 
-print('Setting up metamask extension please wait...')
+    url = 'https://xord-testing.s3.amazonaws.com/selenium/10.0.2_0.crx'
+    urllib.request.urlretrieve(url, os.getcwd() + '/metamaskExtension.crx')
 
-url = 'https://xord-testing.s3.amazonaws.com/selenium/10.0.2_0.crx'
-urllib.request.urlretrieve(url, os.getcwd() + '/metamaskExtension.crx')
+    global EXTENSION_PATH
+    EXTENSION_PATH = os.getcwd() + '\metamaskExtension.crx'
 
-
-EXTENSION_PATH = os.getcwd() + '\metamaskExtension.crx'
-
-
-EXTENSION_ID = 'nkbihfbeogaeaoehlefnkodbefgpgknn'
-
-
+    global EXTENSION_ID
+    EXTENSION_ID = 'nkbihfbeogaeaoehlefnkodbefgpgknn'
 
 def launchSeleniumWebdriver(driverPath):
     print('path' ,EXTENSION_PATH)
