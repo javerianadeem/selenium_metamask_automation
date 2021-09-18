@@ -188,15 +188,15 @@ def addToken(tokenAddress):
     time.sleep(5)
     driver.find_element_by_xpath('//*[@id="popover-content"]/div/div/section/header/div/button').click()
 
-    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[1]/div/div[2]/div[1]/div/span').click()
-    time.sleep(2)
+    # driver.find_element_by_xpath('//*[@id="app-content"]/div/div[1]/div/div[2]/div[1]/div/span').click()
+    # time.sleep(2)
 
     print("clicking add token button")
     driver.find_element_by_xpath('//*[@id="app-content"]/div/div[4]/div/div/div/div[3]/div/div[3]/button').click()
     time.sleep(2)
     # adding address
     driver.find_element_by_id("custom-address").send_keys(tokenAddress)
-    time.sleep(3)
+    time.sleep(10)
     # clicking add
     driver.find_element_by_xpath('//*[@id="app-content"]/div/div[4]/div/div[2]/div[2]/footer/button[2]').click()
     time.sleep(2)
