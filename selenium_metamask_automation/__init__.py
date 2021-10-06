@@ -77,6 +77,8 @@ def changeMetamaskNetwork(networkName):
             li.click()
             print(text, "is selected")
             time.sleep(2)
+            driver.switch_to.window(driver.window_handles[0])
+            time.sleep(3)
             return
     time.sleep(2)
     print("Please provide a valid network name")
@@ -202,5 +204,46 @@ def addToken(tokenAddress):
     time.sleep(2)
     # add tokens
     driver.find_element_by_xpath('//*[@id="app-content"]/div/div[4]/div/div[3]/footer/button[2]').click()
+    driver.switch_to.window(driver.window_handles[0])
+    time.sleep(3)
+
+def signConfirm():
+    print("sign")
+    time.sleep(3)
+
+    driver.execute_script("window.open('');")
+    driver.switch_to.window(driver.window_handles[1])
+
+    driver.get('chrome-extension://{}/popup.html'.format(EXTENSION_ID))
+    time.sleep(5)
+    driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
+    time.sleep(3)
+    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[3]/button[2]').click()
+    time.sleep(1)
+    # driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[2]/div[2]/div[2]/footer/button[2]').click()
+    # time.sleep(3)
+    print('Sign confirmed')
+    print(driver.window_handles)
+    driver.switch_to.window(driver.window_handles[0])
+    time.sleep(3)
+
+
+def signReject():
+    print("sign")
+    time.sleep(3)
+
+    driver.execute_script("window.open('');")
+    driver.switch_to.window(driver.window_handles[1])
+
+    driver.get('chrome-extension://{}/popup.html'.format(EXTENSION_ID))
+    time.sleep(5)
+    driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
+    time.sleep(3)
+    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[3]/button[1]').click()
+    time.sleep(1)
+    # driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[2]/div[2]/div[2]/footer/button[2]').click()
+    # time.sleep(3)
+    print('Sign rejected')
+    print(driver.window_handles)
     driver.switch_to.window(driver.window_handles[0])
     time.sleep(3)
