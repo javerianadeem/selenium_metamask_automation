@@ -67,7 +67,7 @@ The network names are mentioned below. On selecting any other network, it will t
 
 #### 4. To connect to any website use the function below:
 ```sh
-selenium_metamask_automatiom.connectToWebsite()
+selenium_metamask_automation.connectToWebsite()
 ```
 
 In order to use this function, you have to visit the website first
