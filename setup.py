@@ -1,12 +1,21 @@
 from setuptools import setup
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+import io
+import os
+
+here = os.path.abspath(os.path.dirname(__file__))
+
+try:
+    with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
+        long_description = '\n' + f.read()
+except FileNotFoundError:
+    long_description = "Python package for automating metamask workflows"
+
 
 setup(name='selenium_metamask_automation',
-      version='0.0.1',
+      version='0.0.3',
       packages=['selenium_metamask_automation'],
-      description="Python package for automating metamask transaction",
+      description="Python package for automating metamask workflows",
       keywords="python metamask blockchain automate-metamask install-metamask-extension-selenium selenium-metamask metamask-automation",
       install_requires=["selenium>=3.141.0", "pywin32"],
       python_requires='>=3.8',
@@ -15,6 +24,6 @@ setup(name='selenium_metamask_automation',
       author='Javeria Nadeem',
       author_email='javerianadeem03@gmail.com',
       long_description=long_description,
-      long_description_content_type='text/x-rst',
+      long_description_content_type='text/markdown'
 
 )
