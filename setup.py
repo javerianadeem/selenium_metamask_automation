@@ -1,5 +1,7 @@
 from setuptools import setup
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(name='selenium_metamask_automation',
       version='0.0.1',
@@ -8,10 +10,11 @@ setup(name='selenium_metamask_automation',
       keywords="python metamask blockchain automate-metamask install-metamask-extension-selenium selenium-metamask metamask-automation",
       install_requires=["selenium>=3.141.0", "pywin32"],
       python_requires='>=3.8',
-      url='git@github.com:javerianadeem/selenium_metamask_automation',
+      url='https://github.com/javerianadeem/selenium_metamask_automation.git',
+      homepage='https://github.com/javerianadeem/selenium_metamask_automation.git',
       author='Javeria Nadeem',
       author_email='javerianadeem03@gmail.com',
-      long_description='long_description',
+      long_description=long_description,
       long_description_content_type='text/x-rst',
 
 )

@@ -4,22 +4,20 @@ from selenium.webdriver.chrome.options import Options
 import os
 import urllib.request
 
-
-print('Setting up metamask extension please wait...')
-
-url = 'https://xord-testing.s3.amazonaws.com/selenium/10.0.2_0.crx'
-urllib.request.urlretrieve(url, os.getcwd() + '/metamaskExtension.crx')
-
-
 EXTENSION_PATH = os.getcwd() + '\metamaskExtension.crx'
-
 
 EXTENSION_ID = 'nkbihfbeogaeaoehlefnkodbefgpgknn'
 
 
+def downloadMetamaskExtension():
+    print('Setting up metamask extension please wait...')
+
+    url = 'https://xord-testing.s3.amazonaws.com/selenium/10.0.2_0.crx'
+    urllib.request.urlretrieve(url, os.getcwd() + '/metamaskExtension.crx')
+
 
 def launchSeleniumWebdriver(driverPath):
-    print('path' ,EXTENSION_PATH)
+    print('path', EXTENSION_PATH)
     chrome_options = Options()
     chrome_options.add_extension(EXTENSION_PATH)
     global driver
@@ -28,8 +26,8 @@ def launchSeleniumWebdriver(driverPath):
     print("Extension has been loaded")
     return driver
 
-def metamaskSetup(recoveryPhrase, password):
 
+def metamaskSetup(recoveryPhrase, password):
     driver.switch_to.window(driver.window_handles[0])
 
     driver.find_element_by_xpath('//button[text()="Get Started"]').click()
@@ -58,8 +56,6 @@ def metamaskSetup(recoveryPhrase, password):
 
 
 def changeMetamaskNetwork(networkName):
-    launchSeleniumWebdriver('C:\Drivers\chromedriver_win32\chromedriver.exe')
-    metamaskSetup('vast subject prize relax valid section shell jealous fun army pear boring', 'metamask123')
     # opening network
     print("Changing network")
     driver.switch_to.window(driver.window_handles[1])
@@ -77,10 +73,12 @@ def changeMetamaskNetwork(networkName):
     time.sleep(2)
     for li in all_li:
         text = li.text
-        if(text == networkName):
+        if (text == networkName):
             li.click()
             print(text, "is selected")
             time.sleep(2)
+            driver.switch_to.window(driver.window_handles[0])
+            time.sleep(3)
             return
     time.sleep(2)
     print("Please provide a valid network name")
@@ -88,8 +86,8 @@ def changeMetamaskNetwork(networkName):
     driver.switch_to.window(driver.window_handles[0])
     time.sleep(3)
 
-def connectToWebsite():
 
+def connectToWebsite():
     time.sleep(3)
 
     driver.execute_script("window.open('');")
@@ -107,6 +105,7 @@ def connectToWebsite():
     print(driver.window_handles)
     driver.switch_to.window(driver.window_handles[0])
     time.sleep(3)
+
 
 def confirmApprovalFromMetamask():
     driver.execute_script("window.open('');")
@@ -178,7 +177,73 @@ def rejectTransactionFromMetamask():
     time.sleep(2)
     print("Transaction rejected")
 
-    # switch to dafi
+    # switch to web window
     driver.switch_to.window(driver.window_handles[0])
     time.sleep(3)
 
+def addToken(tokenAddress):
+    # opening network
+    print("Adding Token")
+    driver.switch_to.window(driver.window_handles[1])
+    driver.get('chrome-extension://{}/home.html'.format(EXTENSION_ID))
+    print("closing popup")
+    time.sleep(5)
+    driver.find_element_by_xpath('//*[@id="popover-content"]/div/div/section/header/div/button').click()
+
+    # driver.find_element_by_xpath('//*[@id="app-content"]/div/div[1]/div/div[2]/div[1]/div/span').click()
+    # time.sleep(2)
+
+    print("clicking add token button")
+    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[4]/div/div/div/div[3]/div/div[3]/button').click()
+    time.sleep(2)
+    # adding address
+    driver.find_element_by_id("custom-address").send_keys(tokenAddress)
+    time.sleep(10)
+    # clicking add
+    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[4]/div/div[2]/div[2]/footer/button[2]').click()
+    time.sleep(2)
+    # add tokens
+    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[4]/div/div[3]/footer/button[2]').click()
+    driver.switch_to.window(driver.window_handles[0])
+    time.sleep(3)
+
+def signConfirm():
+    print("sign")
+    time.sleep(3)
+
+    driver.execute_script("window.open('');")
+    driver.switch_to.window(driver.window_handles[1])
+
+    driver.get('chrome-extension://{}/popup.html'.format(EXTENSION_ID))
+    time.sleep(5)
+    driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
+    time.sleep(3)
+    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[3]/button[2]').click()
+    time.sleep(1)
+    # driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[2]/div[2]/div[2]/footer/button[2]').click()
+    # time.sleep(3)
+    print('Sign confirmed')
+    print(driver.window_handles)
+    driver.switch_to.window(driver.window_handles[0])
+    time.sleep(3)
+
+
+def signReject():
+    print("sign")
+    time.sleep(3)
+
+    driver.execute_script("window.open('');")
+    driver.switch_to.window(driver.window_handles[1])
+
+    driver.get('chrome-extension://{}/popup.html'.format(EXTENSION_ID))
+    time.sleep(5)
+    driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
+    time.sleep(3)
+    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[3]/button[1]').click()
+    time.sleep(1)
+    # driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[2]/div[2]/div[2]/footer/button[2]').click()
+    # time.sleep(3)
+    print('Sign rejected')
+    print(driver.window_handles)
+    driver.switch_to.window(driver.window_handles[0])
+    time.sleep(3)
