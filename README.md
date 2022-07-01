@@ -9,6 +9,10 @@ This package is created to automate metamask wallet extension using selenium web
 ```sh
 pip install ./selenium_metamask_automation
 ```
+or
+```sh
+pip install -i https://test.pypi.org/simple/ selenium-metamask-automation
+```
 Check if the package exists
 ```sh
 pip list
