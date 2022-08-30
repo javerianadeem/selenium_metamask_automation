@@ -17,7 +17,10 @@ setup(name='selenium_metamask_automation',
       packages=['selenium_metamask_automation'],
       description="Python package for automating metamask workflows",
       keywords="python metamask blockchain automate-metamask install-metamask-extension-selenium selenium-metamask metamask-automation",
-      install_requires=["selenium>=3.141.0", "pywin32"],
+      install_requires=["selenium>=3.141.0"],
+      extras_require = {
+        'windows':  ["pywin32"]
+      },
       python_requires='>=3.8',
       url='https://github.com/javerianadeem/selenium_metamask_automation.git',
       homepage='https://github.com/javerianadeem/selenium_metamask_automation.git',
