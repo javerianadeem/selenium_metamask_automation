@@ -88,6 +88,23 @@ def changeMetamaskNetwork(networkName):
     driver.switch_to.window(driver.window_handles[0])
     time.sleep(3)
 
+def addMetamaskNetwork(network_name, rpc_url, chain_id, currency_symbol):
+    print("Adding network")
+    driver.switch_to.window(driver.window_handles[1])
+    driver.get('chrome-extension://{}/home.html#settings/networks/add-network'.format(EXTENSION_ID))
+    print('get add network page')
+
+    driver.find_element(By.XPATH,'//button[contains(text(), "Add Network")]').click()
+
+    inputs = driver.find_elements(By.XPATH,'//input')
+    inputs[0].send_keys(network_name)
+    inputs[1].send_keys(rpc_url)
+    inputs[2].send_keys(chain_id)
+    inputs[3].send_keys(currency_symbol)
+    driver.find_element(By.XPATH,'//button[contains(text(), "Save")]').click()
+    time.sleep(2)
+    driver.switch_to.window(driver.window_handles[0])
+    time.sleep(3)
 
 def connectToWebsite():
     time.sleep(3)

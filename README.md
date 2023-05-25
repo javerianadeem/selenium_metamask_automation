@@ -124,6 +124,15 @@ selenium_metamask_automation.signReject()
 ```
 
 
+#### 10. To Add a new metamask Network:
+```sh
+selenium_metamask_automation.addMetamaskNetwork(arg1, arg2, arg3, arg4)
+```
+arg1: network name
+arg2: rpc url
+arg3: chain ID
+arg4: currency symbol
+
 ### Errors you might face:
 
 pip list shows the package ```“selenium_metamask_automation”``` but your IDE does not detect the package
