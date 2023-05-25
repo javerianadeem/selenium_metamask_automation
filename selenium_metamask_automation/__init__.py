@@ -3,6 +3,7 @@ import time
 from selenium.webdriver.chrome.options import Options
 import os
 import urllib.request
+from selenium.webdriver.common.by import By
 
 EXTENSION_PATH = os.getcwd() + '\metamaskExtension.crx'
 
@@ -30,26 +31,27 @@ def launchSeleniumWebdriver(driverPath):
 def metamaskSetup(recoveryPhrase, password):
     driver.switch_to.window(driver.window_handles[0])
 
-    driver.find_element_by_xpath('//button[text()="Get Started"]').click()
-    driver.find_element_by_xpath('//button[text()="Import wallet"]').click()
-    driver.find_element_by_xpath('//button[text()="No Thanks"]').click()
 
+    driver.find_element(By.XPATH, "//button[contains(text(), 'Get Started')]").click()
+
+    driver.find_element(By.XPATH,'//button[contains(text(), "Import wallet")]').click()
+    driver.find_element(By.XPATH,'//button[contains(text(), "No Thanks")]').click()
     time.sleep(5)
 
-    inputs = driver.find_elements_by_xpath('//input')
+    inputs = driver.find_elements(By.XPATH,'//input')
     inputs[0].send_keys(recoveryPhrase)
     inputs[1].send_keys(password)
     inputs[2].send_keys(password)
-    driver.find_element_by_css_selector('.first-time-flow__terms').click()
-    driver.find_element_by_xpath('//button[text()="Import"]').click()
+    driver.find_element(By.CSS_SELECTOR, '.first-time-flow__terms').click()
+    driver.find_element(By.XPATH,'//button[contains(text(), "Import")]').click()
 
     time.sleep(5)
 
-    driver.find_element_by_xpath('//button[text()="All Done"]').click()
+    driver.find_element(By.XPATH,'//button[contains(text(), "All Done")]').click()
     time.sleep(2)
 
     # closing the message popup after all done metamask screen
-    driver.find_element_by_xpath('//*[@id="popover-content"]/div/div/section/header/div/button').click()
+    driver.find_element(By.XPATH,'//*[@id="popover-content"]/div/div/section/header/div/button').click()
     time.sleep(2)
     print("Wallet has been imported successfully")
     time.sleep(10)
@@ -62,14 +64,14 @@ def changeMetamaskNetwork(networkName):
     driver.get('chrome-extension://{}/home.html'.format(EXTENSION_ID))
     print("closing popup")
     time.sleep(5)
-    driver.find_element_by_xpath('//*[@id="popover-content"]/div/div/section/header/div/button').click()
+    driver.find_element(By.XPATH, '//*[@id="popover-content"]/div/div/section/header/div/button').click()
 
-    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[1]/div/div[2]/div[1]/div/span').click()
+    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[1]/div/div[2]/div[1]/div/span').click()
     time.sleep(2)
     print("opening network dropdown")
-    elem = driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div')
+    elem = driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[3]/div')
     time.sleep(2)
-    all_li = elem.find_elements_by_tag_name("li")
+    all_li = elem.find_elements(By.TAG_NAME, "li")
     time.sleep(2)
     for li in all_li:
         text = li.text
@@ -97,9 +99,9 @@ def connectToWebsite():
     time.sleep(5)
     driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
     time.sleep(3)
-    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[2]/div[4]/div[2]/button[2]').click()
+    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[3]/div/div[2]/div[4]/div[2]/button[2]').click()
     time.sleep(1)
-    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[2]/div[2]/div[2]/footer/button[2]').click()
+    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[3]/div/div[2]/div[2]/div[2]/footer/button[2]').click()
     time.sleep(3)
     print('Site connected to metamask')
     print(driver.window_handles)
@@ -116,7 +118,7 @@ def confirmApprovalFromMetamask():
     driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
     time.sleep(10)
     # confirm approval from metamask
-    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[4]/footer/button[2]').click()
+    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[3]/div/div[4]/footer/button[2]').click()
     time.sleep(12)
     print("Approval transaction confirmed")
 
@@ -134,7 +136,7 @@ def rejectApprovalFromMetamask():
     driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
     time.sleep(10)
     # confirm approval from metamask
-    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[4]/footer/button[1]').click()
+    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[3]/div/div[4]/footer/button[1]').click()
     time.sleep(8)
     print("Approval transaction rejected")
 
@@ -154,7 +156,7 @@ def confirmTransactionFromMetamask():
     time.sleep(10)
 
     # # confirm transaction from metamask
-    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[3]/div[3]/footer/button[2]').click()
+    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[3]/div/div[3]/div[3]/footer/button[2]').click()
     time.sleep(13)
     print("Transaction confirmed")
 
@@ -173,7 +175,7 @@ def rejectTransactionFromMetamask():
     driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
     time.sleep(5)
     # confirm approval from metamask
-    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[3]/div[3]/footer/button[1]').click()
+    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[3]/div/div[3]/div[3]/footer/button[1]').click()
     time.sleep(2)
     print("Transaction rejected")
 
@@ -188,22 +190,22 @@ def addToken(tokenAddress):
     driver.get('chrome-extension://{}/home.html'.format(EXTENSION_ID))
     print("closing popup")
     time.sleep(5)
-    driver.find_element_by_xpath('//*[@id="popover-content"]/div/div/section/header/div/button').click()
+    driver.find_element(By.XPATH, '//*[@id="popover-content"]/div/div/section/header/div/button').click()
 
-    # driver.find_element_by_xpath('//*[@id="app-content"]/div/div[1]/div/div[2]/div[1]/div/span').click()
+    # driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[1]/div/div[2]/div[1]/div/span').click()
     # time.sleep(2)
 
     print("clicking add token button")
-    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[4]/div/div/div/div[3]/div/div[3]/button').click()
+    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[4]/div/div/div/div[3]/div/div[3]/button').click()
     time.sleep(2)
     # adding address
     driver.find_element_by_id("custom-address").send_keys(tokenAddress)
     time.sleep(10)
     # clicking add
-    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[4]/div/div[2]/div[2]/footer/button[2]').click()
+    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[4]/div/div[2]/div[2]/footer/button[2]').click()
     time.sleep(2)
     # add tokens
-    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[4]/div/div[3]/footer/button[2]').click()
+    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[4]/div/div[3]/footer/button[2]').click()
     driver.switch_to.window(driver.window_handles[0])
     time.sleep(3)
 
@@ -218,9 +220,9 @@ def signConfirm():
     time.sleep(5)
     driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
     time.sleep(3)
-    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[3]/button[2]').click()
+    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[3]/div/div[3]/button[2]').click()
     time.sleep(1)
-    # driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[2]/div[2]/div[2]/footer/button[2]').click()
+    # driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[3]/div/div[2]/div[2]/div[2]/footer/button[2]').click()
     # time.sleep(3)
     print('Sign confirmed')
     print(driver.window_handles)
@@ -239,9 +241,9 @@ def signReject():
     time.sleep(5)
     driver.execute_script("window.scrollBy(0, document.body.scrollHeight)")
     time.sleep(3)
-    driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[3]/button[1]').click()
+    driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[3]/div/div[3]/button[1]').click()
     time.sleep(1)
-    # driver.find_element_by_xpath('//*[@id="app-content"]/div/div[3]/div/div[2]/div[2]/div[2]/footer/button[2]').click()
+    # driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[3]/div/div[2]/div[2]/div[2]/footer/button[2]').click()
     # time.sleep(3)
     print('Sign rejected')
     print(driver.window_handles)

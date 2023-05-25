@@ -69,7 +69,7 @@ The network names are mentioned below. On selecting any other network, it will t
 - Rinkeby Test Network
 - Goerli Test Network
 
-#### 4. To connect to any website use the function below:
+#### 5. To connect to any website use the function below:
 ```sh
 selenium_metamask_automation.connectToWebsite()
 ```
@@ -77,7 +77,7 @@ selenium_metamask_automation.connectToWebsite()
 In order to use this function, you have to visit the website first
 ```sh
 driver.get("https://google.com")
-selenium_metamask_automatiom.connectToWebsite()
+selenium_metamask_automation.connectToWebsite()
 ```
 
 #### 6. For approval transactions:

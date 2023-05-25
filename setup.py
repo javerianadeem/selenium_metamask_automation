@@ -13,11 +13,11 @@ except FileNotFoundError:
 
 
 setup(name='selenium_metamask_automation',
-      version='0.0.3',
+      version='0.0.4',
       packages=['selenium_metamask_automation'],
       description="Python package for automating metamask workflows",
       keywords="python metamask blockchain automate-metamask install-metamask-extension-selenium selenium-metamask metamask-automation",
-      install_requires=["selenium>=3.141.0"],
+      install_requires=["selenium>=4.9.1"],
       extras_require = {
         'windows':  ["pywin32"]
       },
