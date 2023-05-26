@@ -216,7 +216,7 @@ def addToken(tokenAddress):
     driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[4]/div/div/div/div[3]/div/div[3]/button').click()
     time.sleep(2)
     # adding address
-    driver.find_element_by_id("custom-address").send_keys(tokenAddress)
+    driver.find_element(By.ID, "custom-address").send_keys(tokenAddress)
     time.sleep(10)
     # clicking add
     driver.find_element(By.XPATH, '//*[@id="app-content"]/div/div[4]/div/div[2]/div[2]/footer/button[2]').click()
