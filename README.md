@@ -69,7 +69,7 @@ The network names are mentioned below. On selecting any other network, it will t
 - Rinkeby Test Network
 - Goerli Test Network
 
-#### 4. To connect to any website use the function below:
+#### 5. To connect to any website use the function below:
 ```sh
 selenium_metamask_automation.connectToWebsite()
 ```
@@ -77,7 +77,7 @@ selenium_metamask_automation.connectToWebsite()
 In order to use this function, you have to visit the website first
 ```sh
 driver.get("https://google.com")
-selenium_metamask_automatiom.connectToWebsite()
+selenium_metamask_automation.connectToWebsite()
 ```
 
 #### 6. For approval transactions:
@@ -123,6 +123,15 @@ signReject:
 selenium_metamask_automation.signReject()
 ```
 
+
+#### 10. To Add a new metamask Network:
+```sh
+selenium_metamask_automation.addMetamaskNetwork(arg1, arg2, arg3, arg4)
+```
+arg1: network name
+arg2: rpc url
+arg3: chain ID
+arg4: currency symbol
 
 ### Errors you might face:
 
